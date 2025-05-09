@@ -177,6 +177,7 @@ export class DeviceDatabase {
 					}
 				}
 	        };
+		this.saveToLocalStorage(); // 初回起動時に保存
 		}
     }
 	
