@@ -1,0 +1,40 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: auto; /* ここでスクロールを有効にする */
+}
+
+.tabs {
+  margin-top: 1em;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  margin-right: 0px;
+  color: black;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+}
+
+.tab-button.active {
+  background-color: #ccc;
+}
+
+.tab-content {
+  margin-top: 0px;
+  border-top: 1px solid #aaa;
+  padding-top: 10px;
+}
+
+html, body {
+  display: flex;
+  flex-direction: column;
+}
+
+select:focus {
+ 	outline: none;
+    box-shadow: none !important;
+    border: 1px solid #ccc; /* 通常時と同じ色に固定 */
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>スケジュール</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="calendar-container">
+    <!-- 日付タブ（JavaScriptで生成） -->
+    <div class="date-tabs" id="date-tabs"></div>
+	<div class="calendar-header" id="selected-date" data-date="2025-05-08">2025年5月8日</div>
+    <div class="calendar-content" id="schedule-content">
+      <!-- 時間ごとの行 -->
+      <div class="time-row" data-time="09:00">
+        <div class="time-label">09:00</div>
+        <div class="schedule-title" id="title-09:00"></div>
+        <button class="schedule-button" onclick="addSchedule('09:00')">予定を追加</button>
+	</div>
+	
+	<div class="time-row" data-time="10:00">
+        <div class="time-label">10:00</div>
+        <div class="schedule-title" id="title-10:00"></div>
+        <button class="schedule-button" onclick="addSchedule('10:00')">予定を追加</button>
+      </div>
+  
+	
+	  <div class="time-row" data-time="11:00">
+        <div class="time-label">11:00</div>
+        <div class="schedule-title" id="title-11:00"></div>
+        <button class="schedule-button" onclick="addSchedule('11:00')">予定を追加</button>
+      </div>
+  
+	  <div class="time-row" data-time="12:00">
+        <div class="time-label">12:00</div>
+        <div class="schedule-title" id="title-12:00"></div>
+        <button class="schedule-button" onclick="addSchedule('12:00')">予定を追加</button>
+      </div>
+	  <div class="time-row" data-time="13:00">
+        <div class="time-label">13:00</div>
+        <div class="schedule-title" id="title-13:00"></div>
+        <button class="schedule-button" onclick="addSchedule('13:00')">予定を追加</button>
+      </div>
+	  <div class="time-row" data-time="14:00">
+        <div class="time-label">14:00</div>
+        <div class="schedule-title" id="title-14:00"></div>
+        <button class="schedule-button" onclick="addSchedule('14:00')">予定を追加</button>
+      </div>
+	  <div class="time-row" data-time="15:00">
+        <div class="time-label">15:00</div>
+        <div class="schedule-title" id="title-15:00"></div>
+        <button class="schedule-button" onclick="addSchedule('15:00')">予定を追加</button>
+      </div>
+	  <div class="time-row" data-time="16:00">
+        <div class="time-label">16:00</div>
+        <div class="schedule-title" id="title-16:00"></div>
+        <button class="schedule-button" onclick="addSchedule('16:00')">予定を追加</button>
+      </div>
+	  <div class="time-row" data-time="17:00">
+        <div class="time-label">17:00</div>
+        <div class="schedule-title" id="title-17:00"></div>
+        <button class="schedule-button" onclick="addSchedule('17:00')">予定を追加</button>
+      </div>
+	  <div class="time-row" data-time="18:00">
+        <div class="time-label">18:00</div>
+        <div class="schedule-title" id="title-18:00"></div>
+        <button class="schedule-button" onclick="addSchedule('18:00')">予定を追加</button>
+      </div>
+	  <div class="time-row" data-time="19:00">
+        <div class="time-label">19:00</div>
+        <div class="schedule-title" id="title-19:00"></div>
+        <button class="schedule-button" onclick="addSchedule('19:00')">予定を追加</button>
+	  </div>
+    </div>
+  </div>
+
+  <script>
+  const currentDate = new Date("2025-05-08"); // ← 必ず有効にする
+  let weekOffset = 0;
+
+  function formatDate(date) {
+    return date.toISOString().split("T")[0]; // yyyy-mm-dd
+  }
+
+  function renderWeek(offsetDays = 0) {
+	  const tabs = document.getElementById("date-tabs");
+	  tabs.innerHTML = ""; // clear tabs
+	  const base = new Date(currentDate);
+	  base.setDate(base.getDate() + offsetDays);
+	
+	  const dateList = [];
+	
+	  // << ボタンを追加
+	  const prevBtn = document.createElement("button");
+	  prevBtn.className = "date-tab prev-week-btn";
+	  prevBtn.textContent = "<<";
+	  prevBtn.onclick = () => {
+	    weekOffset -= 7;
+	    renderWeek(weekOffset);
+	  };
+	  tabs.appendChild(prevBtn);
+	
+	  for (let i = 0; i < 7; i++) {
+	    const d = new Date(base);
+	    d.setDate(base.getDate() + i);
+	    const yyyy_mm_dd = formatDate(d);
+	    dateList.push(yyyy_mm_dd);
+	
+	    const button = document.createElement("button");
+	    button.className = "date-tab";
+	    button.textContent = `${d.getMonth() + 1}/${d.getDate()}`;
+	    button.dataset.date = yyyy_mm_dd;
+	    button.onclick = () => loadSchedule(yyyy_mm_dd);
+	    tabs.appendChild(button);
+	  }
+
+  // >> ボタンを追加
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "date-tab next-week-btn";
+  nextBtn.textContent = ">>";
+  nextBtn.onclick = () => {
+    weekOffset += 7;
+    renderWeek(weekOffset);
+  };
+  tabs.appendChild(nextBtn);
+
+  loadSchedule(dateList[0]); // 最初の日を表示
+}
+
+  function loadSchedule(date) {
+	  const parsed = new Date(date);
+	  if (isNaN(parsed)) {
+	    console.error("無効な日付:", date);
+	    return;
+	  }
+	
+	  // タブのハイライト
+	  document.querySelectorAll(".date-tab").forEach(tab => {
+	    tab.classList.remove("active");
+	    if (tab.dataset.date === date) {
+	      tab.classList.add("active");
+	    }
+	  });
+	
+	  // 日付表示
+	  const display = parsed.toLocaleDateString("ja-JP", {
+	    year: 'numeric', month: 'long', day: 'numeric'
+	  });
+	
+	  const displayElem = document.getElementById("selected-date");
+	  displayElem.textContent = display;
+	  displayElem.setAttribute("data-date", formatDate(parsed));
+	
+	  const times = [
+	    "09:00", "10:00", "11:00", "12:00", "13:00",
+	    "14:00", "15:00", "16:00", "17:00", "18:00",
+	    "19:00"
+	  ];
+	
+	  times.forEach(time => {
+	    const title = localStorage.getItem(`schedule_${formatDate(parsed)}_${time}`);
+	    document.getElementById(`title-${time}`).textContent = title || "";
+	  });
+	}
+
+  function addSchedule(time) {
+	  const dateElem = document.getElementById("selected-date");
+	  const isoDate = dateElem.dataset.date; // ← ISO形式で取得
+	
+	  if (!isoDate) {
+	    alert("日付が取得できませんでした");
+	    return;
+	  }
+	
+	  const title = prompt(`${time}の予定を入力してください`);
+	  if (title) {
+	    localStorage.setItem(`schedule_${isoDate}_${time}`, title);
+	    loadSchedule(isoDate);
+	  }
+	}
+
+  // 初期表示
+  renderWeek();
+</script>
+</body>
+</html>

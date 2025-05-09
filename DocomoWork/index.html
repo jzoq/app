@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ドコモ業務</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="tabs">
+		<button class="tab-button active" data-tab="schedule">スケジュール</button>
+		<button class="tab-button" data-tab="device">端末情報編集</button>
+		<button class="tab-button" data-tab="daily">日々業務</button>
+	</div>
+	
+	<div class="tab-content" id="schedule">
+		<iframe 
+			src="Schedule/index.html" 
+			width="100%" 
+			height="2600px" 
+			style="border: none;">
+		</iframe>
+	</div>
+	<div class="tab-content" id="device" style="display:none;">
+		<iframe 
+			src="DeviceEdit/index.html" 
+			width="100%" 
+			height="2600px" 
+			style="border: none;">
+		</iframe>
+	</div>
+    
+    <div class="tab-content" id="daily" style="display:none;">ここに日々業務の内容</div>
+
+	<script type="module" src="main.js"></script>
+</body>

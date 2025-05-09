@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ドコモ業務-端末情報編集</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+
+    #editor-panel {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 8px 10px;
+      vertical-align: middle;
+    }
+
+    label {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .unit {
+      white-space: nowrap;
+      padding-left: 4px;
+    }
+
+    #save-device-info {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+	
+	select{
+		color: black;
+	}
+	
+	select:focus {
+     	outline: none;
+	    box-shadow: none !important;
+	    border: 1px solid #ccc; /* 通常時と同じ色に固定 */
+	}
+  </style>
+</head>
+<body>
+  <div id="editor-panel">
+    <table>
+      <tr>
+        <td><label for="edit-device-name">端末名:</label></td>
+        <td colspan="2">
+          <select id="edit-device-name"></select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="edit-device-price">価格:</label></td>
+        <td><input type="number" id="edit-device-price" /></td>
+        <td class="unit">円</td>
+      </tr>
+      <tr>
+        <td><label for="edit-kaedoki-price">カエドキ価格:</label></td>
+        <td><input type="number" id="edit-kaedoki-price" /></td>
+        <td class="unit">円</td>
+      </tr>
+      <tr>
+        <td><label for="edit-warranty-price">補償料金:</label></td>
+        <td><input type="number" id="edit-warranty-price" /></td>
+        <td class="unit">円</td>
+      </tr>
+      <tr>
+        <td><label for="edit-discount-mnp">MNP割引:</label></td>
+        <td><input type="number" id="edit-discount-mnp" /></td>
+        <td class="unit">円</td>
+      </tr>
+      <tr>
+        <td><label for="edit-discount-new">新規割引:</label></td>
+        <td><input type="number" id="edit-discount-new" /></td>
+        <td class="unit">円</td>
+      </tr>
+      <tr>
+        <td><label for="edit-discount-change">機種変更割引:</label></td>
+        <td><input type="number" id="edit-discount-change" /></td>
+        <td class="unit">円</td>
+      </tr>
+    </table>
+
+    <button id="save-device-info">保存</button>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
