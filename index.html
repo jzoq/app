@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>見積もり</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="estimate-warraper">
+		
+		<div class="estimate" id="original-estimate">
+			<div class="toolbar-container">
+				<button id="reset-button">リセット</button>
+				<button id="compare-button">比較</button>
+				<button id="contract">契約関連</button>
+				<button id="docomo-work">ドコモ業務関連</button>
+			</div>
+			
+			<div class="device-contract-wrapper">
+				<div class="device-container">
+					<table id="device-content-table">
+						<tr>
+							<th style="width: 45%;"><select id="device-select">
+								<option value="端末" disabled selected>端末</option></select></th>
+							<td style="width: 45%;background-color: white;" id="device-price">0 円</td>
+						</tr>
+					</table>
+				</div>
+			
+				<div class="contract-container">
+					<div id="contract-content" style="visibility: hidden;">
+						<select id="contract-type">
+							<option value="" disabled selected>契約種別</option>
+							<option value="機種変更">機種変更</option>
+							<option value="新規">新規</option>
+							<option value="MNP">MNP</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		
+			<div id="discount-container" style="visibility: hidden;">
+				割引適用 <input type="checkbox" id="discount-checkbox">
+			</div>
+		
+			<div class="Installments-container">
+				<table class="kaedoki-installments-table">
+					<tr>
+						<td class="kaedoki-name" colspan="2">カエドキプログラム</td>
+						<td style="background-color: white;" id="kaedoki-price">0 円 = </td>
+						<td style="background-color: white;" id="kaedoki-monthly-price">0 円 / 月</td>
+						<td style="text-align: center; background-color: white;"><input type="checkbox" id="kaedoki-price-checkbox"></td>
+					</tr>
+				</table>
+			
+				<table class="installments-table">
+					<tr>
+						<td class="name" style="font-size: 13px;">通常分割</td>
+						<td style="background-color: white;" class="installments-num"><select id="installments-num" value="" style="font-size:13px; background-color: white;">
+							<option value="1">一括</option>
+							<option value="12">12回</option>
+							<option value="24">24回</option>
+							<option value="36">36回</option>
+						</select></td>
+						<td style="background-color: white;" id="normal-price">0 円 = </td>
+						<td style="background-color: white;" id="normal-monthly-price">0 円 / 月</td>
+						<td style="text-align: center; background-color: white;"><input type="checkbox" id="normal-price-checkbox"></td>
+					</tr>
+				</table>
+			</div>
+		
+			<div class="plan-container">
+				<table class="plan-table">
+		                <tr>
+		                    <th colspan="2" style="background-color: #f2f2f2;">料金プラン</th>
+		                    <th style="background-color: #f2f2f2;">価格</th>
+		                    <th style="background-color: #f2f2f2;"></th>
+		                </tr>
+	    
+		                <tr style="background-color: #FFFFCC;">
+		                    <td colspan="2" style="width: 60%">
+		                        <select id="plan-eximo" style="background-color: #FFFFCC;">
+		                            <option value="eximo ~1GB">eximo ~1GB</option>
+		                            <option value="eximo 1~3GB">eximo 1~3GB</option>
+		                            <option value="eximo ~無制限">eximo 無制限~</option>
+		                        </select>
+		                    </td>
+		                    <td style="width:30%; text-align: right;" id="eximo-price">4,565 円</td>
+		                    <td style="width:10%; text-align: center;"><input type="checkbox" id="eximo-checkbox"></td>
+		                </tr>
+	    
+		                <tr style="background-color: #CCFFCC;">
+		                    <td colspan="2" style="width: 60%">
+		                        <select id="plan-irumo" style="background-color: #CCFFCC">
+		                            <option value="irumo 0.5GB">irumo 0.5GB</option>
+		                            <option value="irumo 3GB">irumo 3GB</option>
+		                            <option value="irumo 6GB">irumo 6GB</option>
+		                            <option value="irumo 9GB">irumo 9GB</option>
+		                        </select>
+		                    </td>
+		                    <td style="text-align: right; width:30%;" id="irumo-price">550 円</td>
+		                    <td style="width:10%; text-align: center;"><input type="checkbox" id="irumo-checkbox"></td>
+		                </tr>
+	    
+		                <tr style="background-color: #FFCCCC;">
+		                    <td colspan="2" style="width: 60%;">
+		                        <select id="plan-ahamo" style="background-color: #FFCCCC;">
+		                            <option value="ahamo 30GB">ahamo 30GB</option>
+		                            <option value="ahamo 110GB">ahamo 110GB</option>
+		                        </select>
+		                    </td>
+		                    <td style="text-align: right; width:30%;" id="ahamo-price">2,970 円</td>
+		                    <td style="width:10%; text-align: center;" id="checkbox"><input type="checkbox" id="ahamo-checkbox"></td>
+		                </tr>
+		            </table>
+	        </div>
+		
+			<div class="option-container">
+				<table class="option-table">
+					<tr>
+	         			  <th style="width: 60%;"><select id="call-option">
+	                        <option value="" disabled selected>通話オプション</option>
+	                        <option value="5分通話無料">5分通話無料</option>
+	                        <option value="かけ放題">かけ放題</option>
+	                        <option value="なし">なし</option>
+	                    </select></th>
+						<td id="call-price" style="width:30%; background-color: white; text-align: right;">0 円</td>
+						<td style="width:10%; background-color: white; text-align: center;"><input type="checkbox" id="call-checkbox"></td>
+					</tr>
+				
+					<tr>
+	                    <th style="width: 60%;"><select id="warranty-option" style="background-color: #f2f2f2;">
+							<option value="補償" disabled selected>補償</option>
+	                        <option value="smartあんしん補償" >smartあんしん補償</option>
+	                        <option value="モバイルe保険">モバイルe保険</option>
+	                        <option value="なし">なし</option>
+	                    </select></th>
+						<td id="warranty-price" style="width:30%%; text-align: right; background-color: white;">0 円</td>
+						<td style="width:10%; background-color:white; text-align: center;"><input type="checkbox" id="warranty-checkbox"></td>
+					</tr>
+				
+					<tr>
+	                    <th style="width: 60%;"><select id="mail-option" style="background-color: #f2f2f2;">
+							<option value="メール持ち運び" disabled selected>メール持ち運び</option>
+	                        <option value="ドコモメール">ドコモメール</option>
+	                        <option value="なし">なし</option>
+	                    </select></th>
+						<td id="mail-price" style="background-color:white; width:30%; text-align: right;">0 円</td>
+						<td style="background-color:white; width:10%; text-align: center;"><input type="checkbox" id="mail-checkbox"></td>
+					</tr>
+				
+					<tr>
+	                    <th style="width: 60%;"><select id="security-option" style="background-color: #f2f2f2;">
+							<option value="" disabled selected>セキュリティ</option>
+	                        <option value="あんしんセキュリティ">あんしんセキュリティ</option>
+	                        <option value="ウイルスバスター 1台版">ウイルスバスター 1台版</option>
+							<option value="ウイルスバスター 3台版">ウイルスバスター 3台版</option>
+							<option value="なし">なし</option>
+	                    </select></th>
+						<td id="security-price" style="background-color:white; width:30%; text-align: right;">0 円</td>
+						<td style="background-color:white; width:10%; text-align: center;"><input type="checkbox" id="security-checkbox"></td>
+					</tr>
+	            </table>
+	        </div>
+		
+			<div class="discount-container">
+				<table class="discount-table">
+					<tr>
+		                <th style="width: 60%;"><select id="family-discount-select" style="background-color: #f2f2f2;">
+							<option value="" disabled selected>ファミリー割引き</option>
+		                    <option value="ファミリー割引き 3~">ファミリー割引き 3人~</option>
+		                    <option value="ファミリー割引き ~2人">ファミリー割引き ~2人</option>
+							<option value="なし">なし</option>
+		                </select></th>
+						<td id="family-discount-price" style="background-color:white; width:30%; text-align: right;">0 円</td>
+						<td style="background-color:white; width:10%; text-align: center;"><input type="checkbox" id="family-discount-checkbox"></td>
+					</tr>
+			
+					<tr>
+		                <th style="width: 60%;"><select id="wifi-discount-select" style="background-color: #f2f2f2;">
+							<option value="ドコモ光・home5Gセット割">ドコモ光・home5Gセット割</option>
+		                    <option value="なし">なし</option>
+		                </select></th>
+						<td id="wifi-discount-price" style="background-color:white; width:30%; text-align: right;">1100 円</td>
+						<td style="background-color:white; width:10%; text-align: center;"><input type="checkbox" id="wifi-discount-checkbox"></td>
+					</tr>
+			
+					<tr>
+		                <th style="width: 60%;"><select id="dcard-discount-select" style="background-color: #f2f2f2;">
+							<option value="dカード割">dカード割</option>
+		                    <option value="なし">なし</option>
+		                </select></th>
+						<td id="dcard-discount-price" style=" background-color:white; width:30%; text-align: right;">187 円</td>
+						<td style="background-color:white; width:10%; text-align: center;"><input type="checkbox" id="dcard-discount-checkbox"></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="total-container">合計 0円</div>
+		</div>
+		
+		<div id="comparison-estimate" class="estimate" style="display: none;">
+		</div>
+		
+		<iframe id="side-content" src="" style="width:50%; height: 100%; border: none; display: none;"></iframe>
+	</div>
+	
+	<script type="module" src="main.js"></script>
+</body>
+</html>
