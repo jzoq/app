@@ -78,6 +78,7 @@ button.active {
 
 #comparison-estimate,#side-content{
 	width: 50%;
+  margin-left: 5px;
     background-color: rgba(211, 211, 211, 0.5);
     border: 1px solid rgba(169, 169, 169, 0.5);
     border-radius: 5px;
@@ -153,8 +154,8 @@ input[type="checkbox"] {
 }
 
 #contract-type {
-  margin-left: 5px;
-  padding: 13px 12px;
+  margin-left: 0px;
+  padding: 13px 0px;
   border: none;
   border-radius: 6px;
   background-color: #ccc;
