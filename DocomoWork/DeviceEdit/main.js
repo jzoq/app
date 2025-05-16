@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('edit-kaedoki-price').value = data.kaedokiPrice;
       document.getElementById('edit-warranty-price').value = data.warranty;
       document.getElementById('edit-discount-mnp').value = data.discount.mnp;
-      document.getElementById('edit-discount-new').value = data.discount.new;
-      document.getElementById('edit-discount-change').value = data.discount.change;
+      document.getElementById('edit-discount-new').value = data.discount.newContract;
+      document.getElementById('edit-discount-change').value = data.discount.upgrade;
     }
   });
 
@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
       warranty: Number(document.getElementById('edit-warranty-price').value),
       discount: {
         mnp: Number(document.getElementById('edit-discount-mnp').value),
-        new: Number(document.getElementById('edit-discount-new').value),
-        change: Number(document.getElementById('edit-discount-change').value),
+        newContract: Number(document.getElementById('edit-discount-new').value),
+        upgrade: Number(document.getElementById('edit-discount-change').value),
       }
   };
     saveDeviceDatabase(deviceDatabase);
