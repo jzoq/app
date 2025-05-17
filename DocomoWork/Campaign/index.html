@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ドコモ業務</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div id="tabs">
+		<button class="tab-button active" data-tab="smartphone">スマートフォン</button>
+		<button class="tab-button" data-tab="home5G">home5G</button>
+		<button class="tab-button" data-tab="wifi">ドコモ光</button>
+	</div>
+	
+	<!-- スマートフォン タブ -->
+	<div class="tab-content" id="smartphone">
+		<div>スマートフォン施策表示</div>
+		<div class="policy-list" id="smartphone-policies"></div>
+		<input type="text" id="smartphone-input" placeholder="施策内容を入力">
+		<button onclick="addPolicy('smartphone')">追加</button>
+	</div>
+	
+	<!-- home5G タブ -->
+	<div class="tab-content" id="home5G" style="display:none;">
+		<div>home5Gルータ施策表示</div>
+		<div class="policy-list" id="home5G-policies"></div>
+		<input type="text" id="home5G-input" placeholder="施策内容を入力">
+		<button onclick="addPolicy('home5G')">追加</button>
+	</div>
+	
+	<!-- ドコモ光 タブ -->
+	<div class="tab-content" id="wifi" style="display:none;">
+		<div>ドコモ光施策表示</div>
+		<div class="policy-list" id="wifi-policies"></div>
+		<input type="text" id="wifi-input" placeholder="施策内容を入力">
+		<button onclick="addPolicy('wifi')">追加</button>
+	</div>
+	<script type="module" src="main.js"></script>
+</body>
+</html>

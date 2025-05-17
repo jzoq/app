@@ -41,23 +41,6 @@ export class ToolBarManager {
             }
         });
 			
-		elements.docomoWorkButton.addEventListener('click', () => {
-		    this.isDocomoWorkMode = !this.isDocomoWorkMode;
-		    const iframe = document.getElementById('side-content');
-		
-		    elements.docomoWorkButton.classList.toggle('active', this.isDocomoWorkMode);
-		
-		    if (this.isDocomoWorkMode) {
-		        if (!iframe.src || iframe.src === window.location.href) {
-		            iframe.src = '../DocomoWork/index.html'; // 初回だけ読み込む
-		        }
-		        iframe.style.display = 'block';
-		    } else {
-		        iframe.style.display = 'none';
-		    }
-		});
-		
-		/*
 		elements.contractRelatedButton.addEventListener('click', () => {
 		    this.isContractRelatedMode = !this.isContractRelatedMode;
 		    const iframe = document.getElementById('side-content');
@@ -65,15 +48,28 @@ export class ToolBarManager {
 		    elements.contractRelatedButton.classList.toggle('active', this.isContractRelatedMode);
 		
 		    if (this.isContractRelatedMode) {
-		        if (!iframe.src || iframe.src === window.location.href) {
-		            iframe.src = '../Estimate/managers/toolBar/contractRelated/index.html';
-		        }
+		        iframe.src = '../ContractRelated/index.html/';
 		        iframe.style.display = 'block';
 		    } else {
 		        iframe.style.display = 'none';
+		        iframe.src = ''; // ここでリセット
 		    }
 		});
-		*/
+		
+		elements.docomoWorkButton.addEventListener('click', () => {
+		    this.isDocomoWorkMode = !this.isDocomoWorkMode;
+		    const iframe = document.getElementById('side-content');
+		
+		    elements.docomoWorkButton.classList.toggle('active', this.isDocomoWorkMode);
+		
+		    if (this.isDocomoWorkMode) {
+		        iframe.src = '../DocomoWork/index.html'; // 常に設定
+		        iframe.style.display = 'block';
+		    } else {
+		        iframe.style.display = 'none';
+		        iframe.src = ''; // こちらも必要ならリセット
+		    }
+		});
     }
 
     resetLeftForm() {
